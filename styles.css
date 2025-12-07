@@ -1,0 +1,60 @@
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    background: black;
+  }
+
+
+  :root {
+    --radius: 100px;
+    --mx: -1000px;
+    --my: -1000px;
+  }
+
+  #dots {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-size: 30px 30px;
+    background-image: radial-gradient(circle, rgb(99, 99, 99) 1px, transparent 1px);
+    overflow: hidden;
+  }
+
+
+  #gray-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none; 
+    background-size: 30px 30px;
+    background-image: radial-gradient(circle, rgb(0, 60, 255) 1px, transparent 1px);
+
+
+    clip-path: circle(var(--radius) at var(--mx) var(--my));
+    -webkit-clip-path: circle(var(--radius) at var(--mx) var(--my));
+    transition: clip-path 0.08s linear; 
+  }
+
+
+  #gray-layer::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    box-shadow: 0 0 30px 10px rgba(128,128,128,0.03) inset;
+    clip-path: circle(var(--radius) at var(--mx) var(--my));
+    -webkit-clip-path: circle(var(--radius) at var(--mx) var(--my));
+  }
+
+
+  .no-cursor {
+    --mx: -1000px;
+    --my: -1000px;
+  }
+
+#button {
+    z-index: 0;
+}
